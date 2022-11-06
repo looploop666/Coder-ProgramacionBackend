@@ -1,94 +1,100 @@
 const fs = require('fs');
 
-class Contenedor{
+class Contenedor {
 
-    constructor(fileName){
+    constructor(fileName) {
         this.fileName = fileName;
     }
 
-    async save(object){ 
-        try
-        {
-            const data = await this.getAll();
-            let idMax = 0;
-            data.forEach(element => {
-                if (element.id > idMax)
-                    idMax = element.id;
-            });
-            idMax++;
+    async save(object) {
 
-            const newObject = { title: object.title, price: object.price, thumbnail: object.thumbnail, id: idMax }
-            data.push(newObject);
-            await fs.promises.writeFile(this.fileName, JSON.stringify(data));
+        try {
+            if (await this.checkFileExists('./productos.txt')) {
+                const data = await this.getAll();
+                let idMax = Object.keys(data).length;
+                let newId = idMax + 1;
+                const newObject = { title: object.title, price: object.price, thumbnail: object.thumbnail, id: newId }
+                data.push(newObject);
+                await fs.promises.writeFile(this.fileName, JSON.stringify(data));
 
-            return `Item ${idMax} agregado exitosamente!`;
+                return newId;
+            } else {
+                let data = [];
+                let idMax = 1;
+
+                const newObject = { title: object.title, price: object.price, thumbnail: object.thumbnail, id: idMax }
+                data.push(newObject);
+                console.log(data)
+                await fs.promises.appendFile(this.fileName, JSON.stringify(data));
+
+                return idMax;
+            }
+
         }
-        catch (error)
-        {
-            return error;
+        catch (error) {
+
+            throw new Error(error);
         }
+
     }
 
-    async getById(id){
-        try
-        {
+    async getById(id) {
+        try {
             const data = await this.getAll();
             const objectFound = data.find(x => x.id === id);
 
             return objectFound ?? null;
         }
-        catch (error)
-        {
-            return error;
+        catch (error) {
+            throw new Error(error);
         }
     }
-    async getAll(){
-        try
-        {
+    async getAll() {
+        try {
             const result = await fs.promises.readFile(this.fileName);
             const data = await JSON.parse(result);
-            
             return data;
+
         }
-        catch (error)
-        {
-            return error
+        catch (error) {
+            throw new Error(error)
         }
     }
-    async deleteById(id){
-        try
-        {
+    async deleteById(id) {
+        try {
             if (isNaN(id)) throw new Error("El id ingresado es inválido");
 
             const data = await this.getAll();
             const objectFound = data.find(x => x.id === id);
-            if (objectFound)
-            {
+            if (objectFound) {
                 const newData = data.filter(x => x.id !== id);
-              
+
                 await fs.promises.writeFile(this.fileName, JSON.stringify(newData));
-                
-                return "Registro eliminado exitosamente";
-            }else{
+
+            } else {
                 throw new Error("El id ingresado no existe.");
             }
         }
-        catch (error)
-        {
-            return error
+        catch (error) {
+            throw new Error(error);
         }
     }
 
-    async deleteAll(){
-        try
-        {
-            await fs.promises.writeFile(this.fileName, "");
+    async deleteAll() {
+        try {
+
+            await fs.promises.writeFile(this.fileName, JSON.stringify([]));
         }
-        catch (error)
-        {
-            return error;
+        catch (error) {
+            throw new Error(error);
         }
+    }
+
+    async checkFileExists(filePath) {
+        return fs.promises.access(filePath, fs.constants.F_OK)
+            .then(() => true)
+            .catch(() => false)
     }
 }
 
-module.exports = {Contenedor}
+module.exports = { Contenedor }
