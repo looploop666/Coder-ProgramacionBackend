@@ -11,7 +11,9 @@ class Contenedor {
         try {
             if (await this.checkFileExists('./productos.txt')) {
                 const data = await this.getAll();
-                let idMax = Object.keys(data).length;
+                let dataLenght = Object.keys(data).length;
+                let lastObject = data[dataLenght-1];
+                let idMax = lastObject.id;
                 let newId = idMax + 1;
                 const newObject = { title: object.title, price: object.price, thumbnail: object.thumbnail, id: newId }
                 data.push(newObject);

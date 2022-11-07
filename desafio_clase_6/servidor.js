@@ -7,7 +7,7 @@ const contenedor = new Contenedor('./productos.txt');
 app.get("/productos", (req, res) => {
         contenedor.getAll()
         .then(products => {
-            res.send(JSON.stringify(products));
+            res.json(products);
         })
         .catch(error => {
             throw new Error(error);
@@ -21,7 +21,7 @@ app.get("/productoRandom", (req, res) => {
         products => {
         const productsLength = Object.keys(products).length;
         const randomNumber = Math.floor(Math.random() * (productsLength - 0) + 0);
-        res.send(JSON.stringify(products[randomNumber]));
+        res.json(products[randomNumber]);
     })
     .catch(error => {
         throw new Error(error);
