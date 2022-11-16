@@ -16,9 +16,9 @@ routerProductos.get('/', (req, res) => {
 })
 
 routerProductos.get('/:id', (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
-    const productFound = productos.find((p)=> p.id == id);
+    const productFound = productos.find((p)=> p.id === id);
 
     if (productFound) res.json(productFound)
     else res.json({ error : 'producto no encontrado' });
@@ -26,19 +26,19 @@ routerProductos.get('/:id', (req, res) => {
 
 routerProductos.post('/', (req, res) => {
 
-    let productosLenght = Object.keys(productos).length;
-    if (productosLenght > 0) {
-        let lastProduct = productos[productosLenght-1];
+    let productosLength = productos.length;
+    if (productosLength > 0) {
+        let lastProduct = productos[productosLength-1];
         let idMax = lastProduct.id;
         let newId = idMax + 1;
 
-        const newProduct = {...req.body, ...{id: newId}};
+        const newProduct = {...req.body, id: newId};
    
         productos.push(newProduct);  
         res.json(newProduct);
     }else{
         let idMax = 1;
-        const newProduct = {...req.body, ...{id: idMax}};
+        const newProduct = {...req.body, id: idMax};
 
         productos.push(newProduct);
         res.json(newProduct);
@@ -46,22 +46,22 @@ routerProductos.post('/', (req, res) => {
 });
 
 routerProductos.put('/:id', (req, res) => {
-    const  id  = req.params.id;
-    const productFound = productos.find((ele) => ele.id == id)
+    const  id  = parseInt(req.params.id);
+    const productFound = productos.find((ele) => ele.id === id)
     if(!productFound) {
         res.json({error : 'producto no encontrado'});
     }else{
         const indexProductFound = productos.indexOf(productFound);
-        productos.splice(indexProductFound, 1, {...req.body, ...{id : id}});
-        res.json("Producto agregado correctamente");
+        productos.splice(indexProductFound, 1, {...productFound,...req.body, id : id});
+        res.json("Producto modificado correctamente");
     }
 })
 
 routerProductos.delete('/:id', (req, res) => {
 
-    const id  = req.params.id
+    const id  = parseInt(req.params.id);
 
-    const productFound = productos.find((p)=> p.id == id);
+    const productFound = productos.find((p)=> p.id === id);
 
     if (!productFound) {
         res.json({ error : 'producto no encontrado' })
