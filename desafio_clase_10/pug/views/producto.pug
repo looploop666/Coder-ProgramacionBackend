@@ -1,0 +1,44 @@
+extends layout 
+block renderizar
+    div(class="jumbotron")
+        h1(style="color:blue;") Formulario Ingreso de Productos
+        br
+
+        form(action="/productos" method="post")
+
+            div(class="form-group")
+                label(for="title") <b>Title</b>
+                input(id="title" class="form-control" type="text" name="title")
+        
+
+            div(class="form-group")
+                label(for="price") <b>Price</b>
+                input(id="price" class="form-control" type="number" name="price")
+        
+            div(class="form-group")
+                label(for="thumbnail") <b>Thumbnail</b>
+                input(id="thumbnail" class="form-control" type="text" name="thumbnail")
+            
+
+            button(class="btn btn-success mt-3 mb-5") Enviar
+
+        - const noProducts = "No se encontraron productos!"
+        h2(style="color:crimson;") Historial
+
+            if productos.length > 0 
+                div(class="table-responsive")
+                    table(class="table table-dark")
+                        tr(style="color: yellow") 
+                            th Title 
+                            th Price
+                            th Thumbnail
+
+                        each producto in productos
+                            tr
+                                td!=producto.title
+                                td!=producto.price
+                                td
+                                    img(class="img-fluid img-thumbnail" src!=producto.thumbnail, alt!=producto.title)               
+                            
+            else 
+                h3(class="alert alert-danger")=noProducts
