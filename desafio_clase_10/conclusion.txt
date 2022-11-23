@@ -1,0 +1,6 @@
+Hola!
+Prefiero EJS como motor de plantilla ya que me pareció el más sencillo e intuitivo de usar.
+
+Gracias!
+
+Saludos
