@@ -1,13 +1,13 @@
 import { prodContenedor } from "../routers/routerProductos.js";
 
 export async function getProducts(req, res) {
-  const { id } = req.params.id;
+  const id = req.params.id;
   res.status(200).json(
-    
-      id? await prodContenedor.getById(req.params.id)
+      id? await prodContenedor.getById(id)
         : prodContenedor.getAll()
     );
 }
+
 
 export async function postProduct(req, res) {
   const { nombre, descripcion, codigo, foto, precio, stock } = req.body;

@@ -37,12 +37,13 @@ export default class Contenedor {
     async getById(id) {
         try {
             const data = await this.getAll();
-            const objectFound = data.find(x => x.id === id);
+            const objectFound = data.find(x => x.id === parseInt(id));
             return objectFound ?? null;
         }
         catch (error) {
             throw new Error(error);
         }
+
     }
     async getAll() {
         try {
