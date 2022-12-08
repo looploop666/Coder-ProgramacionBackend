@@ -1,5 +1,7 @@
 import { prodContenedor } from "../routers/routerProductos.js";
 
+export let admin = false;
+
 export async function getProducts(req, res) {
   const id = req.params.id;
   res.status(200).json(
@@ -7,7 +9,6 @@ export async function getProducts(req, res) {
         : prodContenedor.getAll()
     );
 }
-
 
 export async function postProduct(req, res) {
   const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
@@ -50,3 +51,9 @@ export async function putProduct(req, res) {
       ? res.status(404).json({error: -3, descripcion: "El producto no existe"})
       : next();
   }
+
+export function isAdmin(req, res, next){
+    admin 
+        ? next() 
+        : res.status(401).json({error: -1, descripcion: `ruta \'${req.originalUrl}\' método \'${req.method}\' no autorizada`});
+    }

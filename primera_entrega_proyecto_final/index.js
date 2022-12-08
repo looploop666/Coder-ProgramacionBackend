@@ -5,8 +5,6 @@ import routerProductos from "./src/routers/routerProductos.js"
 
 const router = Router();
 
-export let admin = false;
-
 router.use("/productos", routerProductos);
 router.use("/carrito", routerCarritos);
 

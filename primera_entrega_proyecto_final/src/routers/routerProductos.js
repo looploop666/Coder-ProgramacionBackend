@@ -1,7 +1,6 @@
 import express from "express";
 import Contenedor from "../../contenedor.js";
-import admin from "../../index.js"
-import { getProducts, postProduct, putProduct, deleteProduct, isProductAvailable } from "../controllers/controllerProductos.js";
+import { getProducts, postProduct, putProduct, deleteProduct, isProductAvailable, isAdmin } from "../controllers/controllerProductos.js";
 
 const { Router } = express;
 const prodRouter = Router();
@@ -18,9 +17,5 @@ prodRouter.delete("/:id", isAdmin, isProductAvailable, deleteProduct);
 
 export default prodRouter;
 
-function isAdmin(req, res, next){
-    admin 
-        ? next() 
-        : res.status(401).json({error: -1, descripcion: `ruta \'${req.originalUrl}\' método \'${req.method}\' no autorizada`});
-    }
+
 
