@@ -1,13 +1,13 @@
 import express from "express";
 import Contenedor from "../../contenedor.js";
-import { getProducts, postProduct, putProduct, deleteProduct, isProductAvailable, isAdmin } from "../controllers/controllerProductos.js";
+import { getProducts, postProduct, putProduct, deleteProduct, isProductAvailable, isAdmin, isIdValid } from "../controllers/controllerProductos.js";
 
 const { Router } = express;
 const prodRouter = Router();
 
 export const prodContenedor = new Contenedor("./data/productos.txt");
 
-prodRouter.get("/:id?", getProducts);
+prodRouter.get("/:id?", isIdValid, getProducts);
 
 prodRouter.post("/", isAdmin , postProduct);
 
