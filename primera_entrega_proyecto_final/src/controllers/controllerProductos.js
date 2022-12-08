@@ -1,12 +1,13 @@
 import { prodContenedor } from "../routers/routerProductos.js";
 
-export let admin = false;
+//export let admin = false;
+export let admin = true;
 
 export async function getProducts(req, res) {
   const id = req.params.id;
   res.status(200).json(
       id? await prodContenedor.getById(id)
-        : prodContenedor.getAll()
+        : await prodContenedor.getAll()
     );
 }
 

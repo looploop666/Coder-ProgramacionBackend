@@ -11,7 +11,9 @@ export default class Contenedor {
         try {
             if (await this.checkFileExists(`./${this.fileName}`)){
                 const data = await this.getAll();
-                let idMax = Object.keys(data).length;
+                let productosLength = data.length;
+                let lastProduct = data[productosLength-1];
+                let idMax = lastProduct.id;
                 let newId = idMax + 1;
                 data.push({ ...object, id: newId });
                 await fs.promises.writeFile(`./${this.fileName}`, JSON.stringify(data));
