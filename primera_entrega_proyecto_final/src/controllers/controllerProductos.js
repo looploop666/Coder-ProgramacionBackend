@@ -61,8 +61,15 @@ export function isAdmin(req, res, next) {
 }
 
 export async function isIdValid(req, res, next) {
-  const response = await prodContenedor.getById(req.params.id);
-  response == null && req.params.id !== null
-    ? res.status(401).json({ error: -3, descripcion: "El producto no existe" })
-    : next();
+  const id = req.params.id;
+  if (id === undefined){
+    next();
+  }else{
+    const response = await prodContenedor.getById(id);
+    if (response === null){
+      res.status(401).json({ error: -3, descripcion: "El producto no existe" })
+    }else{
+      next();
+    }
+  }
 }
