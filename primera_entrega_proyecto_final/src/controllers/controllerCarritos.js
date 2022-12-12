@@ -32,7 +32,7 @@ export async function postProductInCart(req, res) {
 
 export async function deleteProductInCart(req, res) {
     const { id, id_prod } = req.params;
-    const cart = carContenedor.getById(id);
+    const cart = await carContenedor.getById(id);
 
     const newCart = cart.productos.filter((producto) => {
         return producto.id != id_prod;
@@ -47,17 +47,18 @@ export function isCartAvailable(req, res, next) {
         ? next()
         : res
             .status(401)
-            .json({ error: -3, descripcion: "This cart doesn't exists" });
+            .json({ error: -3, descripcion: "El carrito no existe" });
 }
 
 export function isProductAvailable(req, res, next) {
-    prodContenedor.getById(req.params.id_prod) == null
+    prodContenedor.getById(req.params.id_prod) === null
         ? res.status(401).json({ error: -3, descripcion: "El producto no existe" })
         : next();
 }
 
-export function isProductInCart(req, res, next) {
-    const cartProducts = carContenedor.getById(req.params.id).productos;
+export async function isProductInCart(req, res, next) {
+    const cart = await carContenedor.getById(req.params.id);
+    const cartProducts = cart.productos;
     const prod = cartProducts.filter((product) => product.id == req.params.id_prod);
     prod.length == 0
         ? res.status(401).json({ error: -3, descripcion: "El producto no se encuentra agregado al carrito" })

@@ -15,7 +15,7 @@ export default class Contenedor {
                 let lastProduct = data[productosLength-1];
                 let idMax = lastProduct.id;
                 let newId = idMax + 1;
-                data.push({ ...object, id: newId });
+                data.push({ ...object, id: parseInt(newId) });
                 await fs.promises.writeFile(`./${this.fileName}`, JSON.stringify(data));
 
                 return newId;
@@ -63,7 +63,7 @@ export default class Contenedor {
             if (isNaN(id)) throw new Error("El id ingresado es inválido");
 
             const data = await this.getAll();
-            const objectFound = data.find(x => x.id === id);
+            const objectFound = data.find(x => x.id === parseInt(id));
             if (objectFound) {
                 const newData = data.filter(x => x.id !== id);
 
@@ -98,10 +98,10 @@ export default class Contenedor {
             if (isNaN(id)) throw new Error("El id ingresado es inválido");
 
             const data = await this.getAll();
-            const objectFound = data.find(x => x.id === id);
+            const objectFound = data.find(x => x.id === parseInt(id));
             if (objectFound) {
                 const indexProductFound = data.indexOf(objectFound);
-                data.splice(indexProductFound, 1, {...objectFound, ...object, id : id});
+                data.splice(indexProductFound, 1, {...objectFound, ...object, id : parseInt(id)});
                 await fs.promises.writeFile(`./${this.fileName}`, JSON.stringify(data));
             } else {
                 throw new Error("El id ingresado no existe.");

@@ -1,0 +1,122 @@
+[
+    {
+      "timestamp": 1656704898434,
+      "nombre": "Regla corta",
+      "descripcion": "largo standard 20cm plastico transparente",
+      "codigo": "123",
+      "foto": "https://www.iconfinder.com/icons/2824436/ruler_school_stationary_triangle_icon",
+      "precio": 180,
+      "stock": 35,
+      "id": 2
+    },
+    {
+      "timestamp": 1656719967215,
+      "nombre": "Escuadra",
+      "descripcion": "largo standard 20cm plastico transparente",
+      "codigo": "456",
+      "foto": "https://www.iconfinder.com/icons/2824436/ruler_school_stationary_triangle_icon",
+      "precio": 150,
+      "stock": 18,
+      "id": 3
+    },
+    {
+      "timestamp": 1656720025605,
+      "nombre": "Globo terraqueo",
+      "descripcion": "25 cm de circunferencia",
+      "codigo": "156",
+      "foto": "https://www.iconfinder.com/icons/2824444/earth_geograhy_globe_planet_school_icon",
+      "precio": 5500,
+      "stock": 8,
+      "id": 4
+    },
+    {
+      "timestamp": 1656720890022,
+      "nombre": "Lápices De Colores Cortos x6",
+      "descripcion": "Caja X 6 Colores",
+      "codigo": "314",
+      "foto": "https://www.iconfinder.com/icons/2824443/pen_pencil_school_stationery_icon",
+      "precio": 180,
+      "stock": 1350,
+      "id": 5
+    },
+    {
+      "timestamp": 1656720942033,
+      "nombre": "Ecolapices De Color Supersoft Faber Castell",
+      "descripcion": "Caja X 50 Colores",
+      "codigo": "321",
+      "foto": "https://www.iconfinder.com/icons/2824443/pen_pencil_school_stationery_icon",
+      "precio": 5900,
+      "stock": 25,
+      "id": 6
+    },
+    {
+      "timestamp": 1656720992165,
+      "nombre": "Lapices Faber Castell Supersoft X50",
+      "descripcion": "Caja X 50 Colores",
+      "codigo": "318",
+      "foto": "https://www.iconfinder.com/icons/2824443/pen_pencil_school_stationery_icon",
+      "precio": 4500,
+      "stock": 35,
+      "id": 7
+    },
+    {
+      "timestamp": 1656721219527,
+      "nombre": "Lápices Shwey Largos X12 Colores",
+      "descripcion": "Lápices Lápiz Pinturitas Escolares Shwey Largos X12 Colores",
+      "codigo": "300",
+      "foto": "https://www.iconfinder.com/icons/2824443/pen_pencil_school_stationery_icon",
+      "precio": 200,
+      "stock": 2560,
+      "id": 8
+    },
+    {
+      "timestamp": 1656721252482,
+      "nombre": "Lápices Flexibles Pack X 10 Lápiz Souvenir Colores Con Goma",
+      "descripcion": "Lápices Flexibles Pack X 10 Lápiz Souvenir Colores Con Goma",
+      "codigo": "285",
+      "foto": "https://www.iconfinder.com/icons/2824443/pen_pencil_school_stationery_icon",
+      "precio": 700,
+      "stock": 25600,
+      "id": 9
+    },
+    {
+      "timestamp": 1656774847883,
+      "nombre": "Regla",
+      "descripcion": "largo standard 20cm plastico transparente",
+      "codigo": "123",
+      "foto": "https://www.iconfinder.com/icons/2824436/ruler_school_stationary_triangle_icon",
+      "precio": 180,
+      "stock": 35,
+      "id": 10
+    },
+    {
+      "timestamp": 1656774943771,
+      "nombre": "Regla",
+      "descripcion": "largo standard 20cm plastico transparente",
+      "codigo": "123",
+      "foto": "https://www.iconfinder.com/icons/2824436/ruler_school_stationary_triangle_icon",
+      "precio": 180,
+      "stock": 35,
+      "id": 11
+    },
+    {
+      "timestamp": 1656775081789,
+      "nombre": "Regla",
+      "descripcion": "largo standard 20cm plastico transparente",
+      "codigo": "123",
+      "foto": "https://www.iconfinder.com/icons/2824436/ruler_school_stationary_triangle_icon",
+      "precio": 180,
+      "stock": 35,
+      "id": 12
+    },
+    {
+      "timestamp": 1656775228978,
+      "nombre": "Regla",
+      "descripcion": "largo standard 20cm plastico transparente",
+      "codigo": "123",
+      "foto": "https://www.iconfinder.com/icons/2824436/ruler_school_stationary_triangle_icon",
+      "precio": 180,
+      "stock": 35,
+      "id": 13
+    }
+  ]
