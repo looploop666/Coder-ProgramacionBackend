@@ -65,7 +65,7 @@ export default class Contenedor {
             const data = await this.getAll();
             const objectFound = data.find(x => x.id === parseInt(id));
             if (objectFound) {
-                const newData = data.filter(x => x.id !== id);
+                const newData = data.filter(x => x.id !== parseInt(id));
 
                 await fs.promises.writeFile(`./${this.fileName}`, JSON.stringify(newData));
 
