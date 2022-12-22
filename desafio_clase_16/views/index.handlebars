@@ -1,0 +1,55 @@
+<h1 style="color:blue;">Formulario Ingreso de Productos</h1>
+<br>
+
+<form onsubmit="addProduct()">
+
+    <div class="form-group">
+        <label for="title"><b>Title</b></label>
+        <input id="title" class="form-control" type="text" name="title">
+    </div>
+
+    <div class="form-group">
+        <label for="price"><b>Price</b></label>
+        <input id="price" class="form-control" type="number" name="price">
+    </div>
+
+    <div class="form-group">
+        <label for="thumbnail"><b>Thumbnail</b></label>
+        <input id="thumbnail" class="form-control" type="text" name="thumbnail">
+    </div>
+
+    <button class="btn btn-success mt-3 mb-5">Enviar</button>
+</form>
+
+<h2 style="color:crimson;">Historial</h2>
+
+<div class="table-responsive" id="products-table_div">
+    <table class="table table-dark">
+        <thead>
+            <tr style="color: yellow;">
+                <th>Title</th>
+                <th>Price</th>
+                <th>Thumbnail</th>
+            </tr>
+        </thead>
+        <tbody id="products-table_body"></tbody>
+    </table>
+</div>
+
+<div>
+    <h2 style="color: blue">Centro de Mensajes</h2>
+    <br />
+    <form onsubmit="addMessage()">
+        <div class="form-group">
+            <input id="email" class="form-control" type="text" name="email" placeholder="ejemplo@gmail.com" />
+        </div>
+
+        <div id="all-messages"></div>
+
+        <div class="form-group">
+            <input id="message" class="form-control" type="text" name="message" />
+        </div>
+
+        <button class="btn btn-success mt-3 mb-5">Enviar!</button>
+    </form>
+</div>

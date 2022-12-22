@@ -54,7 +54,6 @@ module.exports = class Contenedor {
         }
         catch (error) {
             console.log(error)
-            //throw new Error(error);
         }
     }
     async deleteById(id) {
